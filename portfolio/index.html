@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdelrahman Shehata | Cybersecurity & SOC Analyst</title>
+  <meta name="description" content="Portfolio of Abdelrahman Shehata Elsayed - Cybersecurity Incident Response & SOC Analyst, Computer Engineering Student at Benha University. Specializing in SIEM, Detection Engineering, and SOC Operations.">
+  <meta name="author" content="Abdelrahman Shehata Elsayed">
+  <meta name="theme-color" content="#070708">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Abdelrahman Shehata | Cybersecurity & SOC Analyst">
+  <meta property="og:description" content="Cybersecurity Incident Response & SOC Analyst specializing in SIEM Architecture, Detection Engineering, and Automated Triage.">
+
+  <!-- Favicon SVG with Cyber Red Shield -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+
+  <!-- Google Fonts: Orbitron, JetBrains Mono, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Orbitron:wght@500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="cyber-theme">
+
+  <!-- BACKGROUND CANVAS & AMBIENT GLOW -->
+  <canvas id="cyber-bg-canvas" aria-hidden="true"></canvas>
+  <div class="cyber-grid-overlay" aria-hidden="true"></div>
+  <div class="ambient-glow glow-red-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-red-bottom" aria-hidden="true"></div>
+  <div class="scanline-overlay" aria-hidden="true"></div>
+
+  <!-- TOP SOC TELEMETRY / STATUS BAR -->
+  <header class="top-telemetry-bar">
+    <div class="telemetry-container">
+      <div class="telemetry-left">
+        <span class="cyber-pulse-badge">
+          <span class="pulse-dot"></span>
+          <span class="status-text">SYSTEM STATUS: <strong class="glow-white">SECURE</strong></span>
+        </span>
+        <span class="telemetry-divider">|</span>
+        <span class="threat-level">
+          <i data-lucide="shield-alert" class="icon-inline"></i>
+          THREAT LEVEL: <span class="badge-elevated">ELEVATED</span>
+        </span>
+        <span class="telemetry-divider hide-mobile">|</span>
+        <span class="analyst-status hide-mobile">
+          <i data-lucide="activity" class="icon-inline"></i>
+          SOC ANALYST: <strong class="neon-red-text">ONLINE</strong>
+        </span>
+      </div>
+
+      <div class="telemetry-right">
+        <div class="utc-clock hide-tablet" id="live-telemetry-clock">
+          <i data-lucide="clock" class="icon-inline"></i>
+          <span id="clock-display">00:00:00 UTC</span>
+        </div>
+        <button id="toggle-audio-btn" class="cyber-tool-btn" title="Toggle UI Sound Synthesizer" aria-label="Toggle Audio Feedback">
+          <i data-lucide="volume-2" id="audio-icon"></i>
+          <span class="btn-label hide-mobile">AUDIO: ON</span>
+        </button>
+        <button id="open-terminal-btn" class="cyber-tool-btn terminal-trigger" title="Launch Interactive Terminal (Ctrl + ~)" aria-label="Open SOC Terminal">
+          <i data-lucide="terminal"></i>
+          <span class="btn-label">CLI TERMINAL</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="cyber-navbar" id="cyber-navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo">
+        <div class="logo-shield">
+          <i data-lucide="shield" class="logo-icon"></i>
+          <span class="logo-radar-sweep"></span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">ABDELRAHMAN<span class="red-dot">.</span>SOC</span>
+          <span class="brand-sub">DEFENSE ARCHITECTURE</span>
+        </div>
+      </a>
+
+      <div class="nav-links" id="nav-menu">
+        <a href="#hero" class="nav-link active"><span class="nav-num">01.</span>OVERVIEW</a>
+        <a href="#about" class="nav-link"><span class="nav-num">02.</span>DOSSIER</a>
+        <a href="#skills" class="nav-link"><span class="nav-num">03.</span>DEFENSE MATRIX</a>
+        <a href="#projects" class="nav-link"><span class="nav-num">04.</span>OPERATIONS</a>
+        <a href="#experience" class="nav-link"><span class="nav-num">05.</span>EXPERIENCE</a>
+        <a href="#contact" class="nav-link"><span class="nav-num">06.</span>COMMS</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#contact" class="cyber-btn cyber-btn-primary nav-cta">
+          <span class="btn-glitch-text">SECURE COMMS</span>
+          <i data-lucide="radio" class="btn-icon"></i>
+        </a>
+        <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN WRAPPER -->
+  <main class="main-content">
+
+    <!-- 01. HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="section-container">
+        <div class="hero-grid">
+          
+          <!-- Hero Left: Typography & CTAs -->
+          <div class="hero-dossier">
+            <div class="hero-pill-badge">
+              <span class="badge-tag">INCIDENT RESPONSE & SOC</span>
+              <span class="badge-sub">MITRE ATT&CK ALIGNED</span>
+            </div>
+
+            <h1 class="hero-title">
+              <span class="greeting-prefix">// CLASSIFIED IDENTITY</span>
+              <span class="name-display">Abdelrahman<br><span class="neon-red-highlight">Shehata</span> Elsayed</span>
+            </h1>
+
+            <div class="hero-dynamic-subtitle">
+              <i data-lucide="chevron-right" class="chevron-icon"></i>
+              <span class="typed-text" id="typewriter-text"></span>
+              <span class="typing-cursor">_</span>
+            </div>
+
+            <p class="hero-bio">
+              Computer and Control Systems Engineering student at <strong>Benha University (GPA: 3.47)</strong> and Cybersecurity Incident Response Analyst specializing in <strong>SIEM architecture</strong>, <strong>detection engineering</strong>, and <strong>SOC operations</strong>.
+            </p>
+
+            <!-- Floating Cyber Metric Badges -->
+            <div class="cyber-metric-chips">
+              <div class="chip">
+                <i data-lucide="crosshair" class="chip-icon"></i>
+                <span>SIEM ARCHITECTURE</span>
+              </div>
+              <div class="chip">
+                <i data-lucide="shield-check" class="chip-icon"></i>
+                <span>ALERT TRIAGE & SOAR</span>
+              </div>
+              <div class="chip">
+                <i data-lucide="cpu" class="chip-icon"></i>
+                <span>LOCAL AI (OLLAMA)</span>
+              </div>
+              <div class="chip highlight-chip">
+                <i data-lucide="award" class="chip-icon"></i>
+                <span>GPA 3.47 / 4.0</span>
+              </div>
+            </div>
+
+            <!-- Quick Action CTA Buttons -->
+            <div class="hero-actions">
+              <a href="#projects" class="cyber-btn cyber-btn-primary">
+                <i data-lucide="folder-git-2" class="btn-icon"></i>
+                <span>VIEW OPERATIONS / PROJECTS</span>
+              </a>
+              <button id="view-cv-btn" class="cyber-btn cyber-btn-secondary">
+                <i data-lucide="file-text" class="btn-icon"></i>
+                <span>ACCESS CV / DOSSIER</span>
+              </button>
+              <a href="https://github.com/AbdelrhmanShehata" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-ghost" title="GitHub Profile">
+                <i data-lucide="github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/abdelrahman-shehata-14b53530a" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-ghost" title="LinkedIn Profile">
+                <i data-lucide="linkedin"></i>
+              </a>
+            </div>
+
+            <!-- Coordinate Telemetry Footer -->
+            <div class="hero-coordinates">
+              <span><i data-lucide="map-pin" class="icon-xs"></i> BENHA, ALQALIOBIA, EGYPT</span>
+              <span class="sep">•</span>
+              <span><i data-lucide="mail" class="icon-xs"></i> abdoshehatalil9@gmail.com</span>
+              <span class="sep">•</span>
+              <span><i data-lucide="phone" class="icon-xs"></i> +201061624475</span>
+            </div>
+          </div>
+
+          <!-- Hero Right: Live SOC Operations Command Widget (Dribbble Cyber Widget) -->
+          <div class="hero-widget-column">
+            <div class="soc-command-card bento-glass-card">
+              <div class="corner-bracket top-left"></div>
+              <div class="corner-bracket top-right"></div>
+              <div class="corner-bracket bottom-left"></div>
+              <div class="corner-bracket bottom-right"></div>
+
+              <div class="card-header">
+                <div class="header-left">
+                  <span class="live-rec-dot"></span>
+                  <span class="header-title">LIVE SOC RADAR & TELEMETRY</span>
+                </div>
+                <div class="header-badges">
+                  <span class="badge-mini-cyan">DEFCON 2</span>
+                  <span class="badge-mini-red">WIFI/ETH: MONITORED</span>
+                </div>
+              </div>
+
+              <!-- Interactive Radar Visualizer Screen -->
+              <div class="radar-visualizer-container">
+                <canvas id="soc-radar-screen" width="340" height="240"></canvas>
+                <div class="radar-hud-metrics">
+                  <div class="hud-item">
+                    <span class="label">RULE CORRELATION:</span>
+                    <span class="val glow-white">MITRE ATT&CK T1059</span>
+                  </div>
+                  <div class="hud-item">
+                    <span class="label">EPS THROUGHPUT:</span>
+                    <span class="val neon-red-text" id="live-eps-counter">1,482 EPS</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Realtime Event Stream Streamer -->
+              <div class="soc-terminal-feed">
+                <div class="feed-header">
+                  <i data-lucide="terminal" class="icon-xs"></i>
+                  <span>SECURITY EVENT STREAM (SIMULATED TIER-1 SOC)</span>
+                </div>
+                <div class="feed-log-container" id="soc-log-feed">
+                  <!-- Live logs populated via JS -->
+                  <div class="log-row info"><span class="log-ts">[15:12:01]</span> <span class="log-svc">WAZUH:</span> Agent-001 sysmon event telemetry synchronized.</div>
+                  <div class="log-row warn"><span class="log-ts">[15:12:14]</span> <span class="log-svc">SURICATA:</span> ET SCAN Potential SSH Brute Force attempt detected.</div>
+                  <div class="log-row alert"><span class="log-ts">[15:12:20]</span> <span class="log-svc">SPLUNK:</span> Alert Correlation triggered: MITRE T1078 (Valid Accounts).</div>
+                  <div class="log-row ok"><span class="log-ts">[15:12:22]</span> <span class="log-svc">OLLAMA-AI:</span> Automated SOAR Triage Report synthesized with 98.4% confidence.</div>
+                </div>
+              </div>
+
+              <!-- Metrics Quick Grid -->
+              <div class="soc-mini-stats">
+                <div class="stat-box">
+                  <span class="stat-number">3.47</span>
+                  <span class="stat-label">BENHA UNIV GPA</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-number">100%</span>
+                  <span class="stat-label">MITRE COVERAGE</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-number">&lt; 15m</span>
+                  <span class="stat-label">MTTD BENCHMARK</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. ABOUT & PROFILE (BENTO GRID) -->
+    <section class="section-padding" id="about">
+      <div class="section-container">
+        
+        <div class="section-header-badge">
+          <span class="section-code">[SEC-02]</span>
+          <span class="section-badge-text">IDENTITY DOSSIER & CAPABILITIES</span>
+        </div>
+        <h2 class="section-title">About & <span class="neon-red-highlight">Professional Profile</span></h2>
+        <p class="section-subtitle">A high-precision incident response analyst bridging the gap between automated detection engineering, machine learning telemetry, and rigorous low-level hardware architecture.</p>
+
+        <!-- Bento Grid for About -->
+        <div class="about-bento-grid">
+
+          <!-- Bento Card 1: Core Summary (Spans 2 cols) -->
+          <div class="bento-glass-card bento-span-2">
+            <div class="card-accent-bar"></div>
+            <div class="bento-card-content">
+              <div class="badge-category">
+                <i data-lucide="user-check"></i>
+                <span>EXECUTIVE SUMMARY</span>
+              </div>
+              <h3 class="bento-title">Cybersecurity Incident Response & SOC Operations</h3>
+              <p class="bento-text">
+                I am a <strong>Computer and Control Systems Engineering</strong> student at <strong>Benha University (GPA: 3.47)</strong> and a dedicated <strong>Cybersecurity Incident Response Analyst</strong>. My core expertise is built upon designing centralized SIEM architectures, writing custom MITRE ATT&CK correlation rules, building robust SOAR workflows, and implementing local AI (Ollama) pipelines to automate alert triage and SOC reporting.
+              </p>
+              <p class="bento-text">
+                With a dual foundation in computer engineering and modern security operations, I leverage deep proficiency in <strong>Python, C++, SQL, Linux/Bash, PowerShell</strong>, and <strong>Machine Learning (Scikit-Learn, Pandas)</strong> alongside low-level system understanding in <strong>VHDL and MIPS Assembly</strong> to deconstruct advanced persistent threats, dissect malicious binaries, and build resilient defenses.
+              </p>
+              
+              <div class="bento-tags-row">
+                <span class="cyber-tag">SIEM Architecture</span>
+                <span class="cyber-tag">MITRE ATT&CK</span>
+                <span class="cyber-tag">SOAR Automations</span>
+                <span class="cyber-tag">Local AI / Ollama</span>
+                <span class="cyber-tag">Detection Engineering</span>
+                <span class="cyber-tag">Computer Engineering</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Card 2: Academic Profile & University -->
+          <div class="bento-glass-card">
+            <div class="card-accent-bar"></div>
+            <div class="bento-card-content">
+              <div class="badge-category">
+                <i data-lucide="graduation-cap"></i>
+                <span>EDUCATION</span>
+              </div>
+              <h3 class="bento-title">Benha University</h3>
+              <div class="academic-spec">
+                <div class="degree-title">Computer and Control Systems Engineering</div>
+                <div class="degree-status">Undergraduate Program</div>
+                <div class="gpa-metric-card">
+                  <div class="gpa-val">3.47</div>
+                  <div class="gpa-desc">Cumulative Grade Point Average (GPA) out of 4.0</div>
+                </div>
+                <div class="location-tag">
+                  <i data-lucide="map-pin" class="icon-xs"></i>
+                  <span>Benha - Alqaliobia, Egypt</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Card 3: SOC Methodology & Playbook Focus -->
+          <div class="bento-glass-card">
+            <div class="card-accent-bar"></div>
+            <div class="bento-card-content">
+              <div class="badge-category">
+                <i data-lucide="crosshair"></i>
+                <span>OPERATIONAL METHODOLOGY</span>
+              </div>
+              <h3 class="bento-title">Defense-In-Depth Stack</h3>
+              <ul class="cyber-feature-list">
+                <li>
+                  <i data-lucide="check-circle-2" class="list-check"></i>
+                  <span><strong>Detection Engineering:</strong> Custom Splunk SPL & Wazuh XML rule authoring.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" class="list-check"></i>
+                  <span><strong>Network Observability:</strong> Zeek & Suricata IDS/IPS packet inspection.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" class="list-check"></i>
+                  <span><strong>Endpoint Visibility:</strong> Windows Sysmon telemetry & Linux auditd.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" class="list-check"></i>
+                  <span><strong>AI-Assisted Triage:</strong> Offline LLM summarization via Ollama.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bento Card 4: Hardware & Low-Level Bridge -->
+          <div class="bento-glass-card bento-span-2">
+            <div class="card-accent-bar"></div>
+            <div class="bento-card-content">
+              <div class="badge-category">
+                <i data-lucide="cpu"></i>
+                <span>ENGINEERING FOUNDATION</span>
+              </div>
+              <h3 class="bento-title">Low-Level Systems & Hardware Architecture Bridge</h3>
+              <p class="bento-text">
+                Unlike analysts with purely administrative backgrounds, my training in computer engineering encompasses processor architecture, register-transfer level (RTL) design with VHDL, and custom MIPS instruction set architecture (ISA) assembler synthesis. This empowers me to inspect kernel exploits, binary payloads, and hardware-level attack vectors from first principles.
+              </p>
+              <div class="stats-counter-strip">
+                <div class="strip-item">
+                  <span class="num">3+</span>
+                  <span class="label">SIEM Platforms Mastered</span>
+                </div>
+                <div class="strip-item">
+                  <span class="num">10+</span>
+                  <span class="label">Programming & Query Languages</span>
+                </div>
+                <div class="strip-item">
+                  <span class="num">4</span>
+                  <span class="label">Industry Programs & Internships</span>
+                </div>
+                <div class="strip-item">
+                  <span class="num">0</span>
+                  <span class="label">Zero Compromise Mentality</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 03. SKILLS MATRIX (INTERACTIVE BENTO CARDS & TABS) -->
+    <section class="section-padding bg-darker" id="skills">
+      <div class="section-container">
+
+        <div class="section-header-badge">
+          <span class="section-code">[SEC-03]</span>
+          <span class="section-badge-text">ARSENAL & TECHNICAL MATRIX</span>
+        </div>
+        <h2 class="section-title">Technical Skills & <span class="neon-red-highlight">Security Arsenal</span></h2>
+        <p class="section-subtitle">Granular categorization of cyber defense platforms, threat intelligence services, programming languages, and data science tooling.</p>
+
+        <!-- Skill Filter Controls -->
+        <div class="skills-filter-container">
+          <button class="filter-btn active" data-filter="all">ALL CAPABILITIES</button>
+          <button class="filter-btn" data-filter="soc">SOC & DETECTION ENGINEERING</button>
+          <button class="filter-btn" data-filter="swe">SOFTWARE, DATA SCIENCE & AI</button>
+        </div>
+
+        <div class="skills-grid">
+
+          <!-- CATEGORY 1: SOC & Detection Engineering -->
+          <div class="skill-category-card bento-glass-card" data-category="soc">
+            <div class="card-glow-pill">SOC DOMAIN</div>
+            <div class="category-header">
+              <div class="cat-icon-wrap">
+                <i data-lucide="shield"></i>
+              </div>
+              <div>
+                <h3 class="cat-title">SOC & Detection Engineering</h3>
+                <span class="cat-desc">Incident Response, SIEM, EDR & Threat Intelligence</span>
+              </div>
+            </div>
+
+            <div class="skill-items-container">
+              
+              <!-- SIEM Ecosystem -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="layers" class="icon-xs"></i> SIEM Ecosystem (Splunk, Wazuh, Elastic SIEM)</span>
+                  <span class="skill-level">EXPERT / ADVANCED</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Custom SPL Rules</span><span>Wazuh Decoders</span><span>Elastic Kibana Dashboards</span>
+                </div>
+              </div>
+
+              <!-- EDR & Sysmon -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="activity" class="icon-xs"></i> EDR & Sysmon Telemetry</span>
+                  <span class="skill-level">ADVANCED</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Process Creation (EventID 1)</span><span>Network Connections (EventID 3)</span><span>Config Optimization</span>
+                </div>
+              </div>
+
+              <!-- IDS/IPS -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="radar" class="icon-xs"></i> IDS / IPS (Suricata, Zeek)</span>
+                  <span class="skill-level">ADVANCED</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Signature Creation</span><span>PCAP Inspection</span><span>Protocol Analysis</span>
+                </div>
+              </div>
+
+              <!-- Incident Response & Alert Triage -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="alert-triangle" class="icon-xs"></i> Incident Response & Alert Triage</span>
+                  <span class="skill-level">SPECIALIST</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>False-Positive Reduction</span><span>Root-Cause Analysis</span><span>Containment Playbooks</span>
+                </div>
+              </div>
+
+              <!-- Threat Intelligence -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="search" class="icon-xs"></i> Threat Intelligence (VirusTotal, AbuseIPDB)</span>
+                  <span class="skill-level">PROFICIENT</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>IOC Ingestion</span><span>Hash Lookup</span><span>Reputation Scoring</span>
+                </div>
+              </div>
+
+              <!-- Log & IOC Analysis -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="file-text" class="icon-xs"></i> Log & IOC Analysis</span>
+                  <span class="skill-level">ADVANCED</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 94%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Windows Event Logs</span><span>Linux Syslog</span><span>Firewall & Web Proxy Logs</span>
+                </div>
+              </div>
+
+              <!-- MITRE ATT&CK Framework -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="target" class="icon-xs"></i> MITRE ATT&CK Framework</span>
+                  <span class="skill-level">MASTERY</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 96%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Tactics & Techniques Mapping</span><span>Adversary Emulation</span><span>Detection Gaps</span>
+                </div>
+              </div>
+
+              <!-- SOAR & TheHive -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="share-2" class="icon-xs"></i> SOAR & TheHive</span>
+                  <span class="skill-level">ADVANCED</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Case Management</span><span>Automated Webhooks</span><span>Evidence Preservation</span>
+                </div>
+              </div>
+
+              <!-- Local AI (Ollama) -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="sparkles" class="icon-xs"></i> Local AI (Ollama) Integration</span>
+                  <span class="skill-level">ADVANCED</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Offline LLM Inference</span><span>Automated Report Generation</span><span>Zero Data Leakage</span>
+                </div>
+              </div>
+
+              <!-- Network Security (CCNA) -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="network" class="icon-xs"></i> Network Security (CCNA)</span>
+                  <span class="skill-level">PROFICIENT</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Subnetting</span><span>TCP/IP Stack</span><span>Routing & Switching</span><span>VLANs & Firewalls</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- CATEGORY 2: Software Engineering, Data Science & AI -->
+          <div class="skill-category-card bento-glass-card" data-category="swe">
+            <div class="card-glow-pill">SWE & AI DOMAIN</div>
+            <div class="category-header">
+              <div class="cat-icon-wrap">
+                <i data-lucide="code-2"></i>
+              </div>
+              <div>
+                <h3 class="cat-title">Software Engineering, Data Science & AI</h3>
+                <span class="cat-desc">Programming, System Scripting, Machine Learning & Low-Level</span>
+              </div>
+            </div>
+
+            <div class="skill-items-container">
+              
+              <!-- Python -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="terminal" class="icon-xs"></i> Python (Security & Data Automation)</span>
+                  <span class="skill-level">ADVANCED</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 94%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Scripting</span><span>API Integration</span><span>Security Tooling</span><span>Log Parsers</span>
+                </div>
+              </div>
+
+              <!-- C++ & Data Structures -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="cpu" class="icon-xs"></i> C++ & Data Structures & Algorithms (DSA)</span>
+                  <span class="skill-level">ADVANCED</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>OOP</span><span>Memory Management</span><span>Trees & Graphs</span><span>Algorithms</span>
+                </div>
+              </div>
+
+              <!-- SQL & Microsoft SQL Server -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="database" class="icon-xs"></i> SQL & Microsoft SQL Server</span>
+                  <span class="skill-level">ADVANCED</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Relational Schema</span><span>Complex Queries</span><span>Performance Tuning</span><span>Indexing</span>
+                </div>
+              </div>
+
+              <!-- Shell Scripting (Bash & PowerShell) -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="command" class="icon-xs"></i> Shell Scripting (Bash & PowerShell)</span>
+                  <span class="skill-level">ADVANCED</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Automated Auditing</span><span>Incident Collection</span><span>Cron & Task Automation</span>
+                </div>
+              </div>
+
+              <!-- Machine Learning & Data Science -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="pie-chart" class="icon-xs"></i> Machine Learning (Pandas, NumPy, Scikit-learn)</span>
+                  <span class="skill-level">PROFICIENT</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 86%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Anomaly Detection</span><span>Feature Extraction</span><span>Classification Models</span>
+                </div>
+              </div>
+
+              <!-- Hardware Description & ISA (VHDL & MIPS Assembly) -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="microchip" class="icon-xs"></i> VHDL & MIPS Assembly</span>
+                  <span class="skill-level">ENGINEERING SPECIALTY</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>RTL Design</span><span>Instruction Decoding</span><span>Hardware Simulation</span><span>Assemblers</span>
+                </div>
+              </div>
+
+              <!-- MATLAB -->
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name"><i data-lucide="binary" class="icon-xs"></i> MATLAB</span>
+                  <span class="skill-level">PROFICIENT</span>
+                </div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div>
+                <div class="skill-tags-inline">
+                  <span>Control Systems</span><span>Numerical Simulation</span><span>Signals Processing</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 04. FEATURED OPERATIONS / PROJECTS SECTION -->
+    <section class="section-padding" id="projects">
+      <div class="section-container">
+
+        <div class="section-header-badge">
+          <span class="section-code">[SEC-04]</span>
+          <span class="section-badge-text">CLASSIFIED ARTIFACTS & REPOSITORIES</span>
+        </div>
+        <h2 class="section-title">Featured <span class="neon-red-highlight">Operations & Projects</span></h2>
+        <p class="section-subtitle">Real-world production architectures, automated SOC pipelines, and low-level engineering repositories directly inspectable on GitHub.</p>
+
+        <div class="projects-grid">
+
+          <!-- PROJECT 1: SIEM DETECTION ENGINEERING & SOC OPERATIONS -->
+          <article class="project-card bento-glass-card featured-capstone">
+            <div class="corner-bracket top-left"></div>
+            <div class="corner-bracket top-right"></div>
+            <div class="corner-bracket bottom-left"></div>
+            <div class="corner-bracket bottom-right"></div>
+
+            <div class="project-header-telemetry">
+              <span class="project-badge-pill">
+                <i data-lucide="award" class="icon-xs"></i>
+                GRADUATION CAPSTONE PROJECT
+              </span>
+              <span class="project-status-pill">
+                <span class="pulse-dot"></span>
+                ACTIVE REPOSITORY
+              </span>
+            </div>
+
+            <!-- Project Visual Showcase Container (Dribbble Cyber UI Mockup) -->
+            <div class="project-visual-mockup">
+              <div class="mockup-hud-bar">
+                <div class="mockup-dots">
+                  <span class="m-dot red"></span>
+                  <span class="m-dot yellow"></span>
+                  <span class="m-dot green"></span>
+                </div>
+                <div class="mockup-path">SIEM://soc-command/pipeline/ollama-thehive.soar</div>
+                <div class="mockup-status">ONLINE 24/7</div>
+              </div>
+
+              <div class="mockup-screen-content">
+                <div class="mockup-telemetry-row">
+                  <div class="telemetry-block">
+                    <span class="t-label">SIEM NODES</span>
+                    <span class="t-value">Wazuh + Splunk + Elastic</span>
+                  </div>
+                  <div class="telemetry-block">
+                    <span class="t-label">CORRELATION</span>
+                    <span class="t-value">MITRE ATT&CK Matrix</span>
+                  </div>
+                  <div class="telemetry-block">
+                    <span class="t-label">AUTOMATION ENGINE</span>
+                    <span class="t-value">TheHive SOAR + Ollama AI</span>
+                  </div>
+                </div>
+
+                <!-- Visual Simulation Alert Triage Box -->
+                <div class="mockup-alert-window">
+                  <div class="alert-top">
+                    <span class="badge-alert-tag">[CRITICAL] T1059.001 - PowerShell Malicious Script Execution</span>
+                    <span class="alert-time">TIME: 15:12:04</span>
+                  </div>
+                  <div class="alert-body">
+                    <span class="code-line">> SYSMON EventID 1: ParentProcess=powershell.exe -Enc JABj...</span>
+                    <span class="code-line">> WAZUH Rule 92140: High Entropy Encoded Execution triggered.</span>
+                    <span class="code-line">> OLLAMA Local AI Summary: Automated Incident Report #SOC-891 generated with suggested quarantine action.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Meta & Detailed Info -->
+            <div class="project-details">
+              <h3 class="project-title">
+                SIEM Detection Engineering, Alert Triage & SOC Operations
+              </h3>
+              <p class="project-description">
+                Engineered a comprehensive, centralized SIEM architecture designed to simulate enterprise SOC workflows. Built custom correlation rules aligned with the <strong>MITRE ATT&CK framework</strong> to capture multi-stage adversary tactics, integrated endpoint telemetry using <strong>Sysmon</strong>, automated alert management via <strong>TheHive SOAR</strong>, and incorporated <strong>Local AI (Ollama)</strong> for automated incident reporting and triage synthesis without cloud data exposure.
+              </p>
+
+              <!-- Tech Stack Badges -->
+              <div class="tech-tags-list">
+                <span class="tech-tag"><i data-lucide="shield" class="icon-xs"></i> Wazuh</span>
+                <span class="tech-tag"><i data-lucide="layers" class="icon-xs"></i> Splunk</span>
+                <span class="tech-tag"><i data-lucide="database" class="icon-xs"></i> Elastic SIEM</span>
+                <span class="tech-tag"><i data-lucide="sparkles" class="icon-xs"></i> Ollama AI</span>
+                <span class="tech-tag"><i data-lucide="activity" class="icon-xs"></i> Sysmon</span>
+                <span class="tech-tag"><i data-lucide="share-2" class="icon-xs"></i> TheHive</span>
+              </div>
+
+              <!-- Action Link to Official Repository -->
+              <div class="project-actions">
+                <a href="https://github.com/Mostafa-174/SIEM-Detection-Engineering-Alert-Triage-SOC-Operations-" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-primary">
+                  <i data-lucide="github" class="btn-icon"></i>
+                  <span>INSPECT SIEM REPOSITORY</span>
+                  <i data-lucide="external-link" class="btn-icon-right"></i>
+                </a>
+              </div>
+            </div>
+
+          </article>
+
+          <!-- PROJECT 2: MIPS ASSEMBLER & PROCESSOR ARCHITECTURE -->
+          <article class="project-card bento-glass-card">
+            <div class="corner-bracket top-left"></div>
+            <div class="corner-bracket top-right"></div>
+            <div class="corner-bracket bottom-left"></div>
+            <div class="corner-bracket bottom-right"></div>
+
+            <div class="project-header-telemetry">
+              <span class="project-badge-pill">
+                <i data-lucide="cpu" class="icon-xs"></i>
+                HARDWARE & COMPILER DESIGN
+              </span>
+              <span class="project-status-pill">
+                <span class="pulse-dot"></span>
+                ACTIVE REPOSITORY
+              </span>
+            </div>
+
+            <!-- Project Visual Showcase Container -->
+            <div class="project-visual-mockup hardware-mockup">
+              <div class="mockup-hud-bar">
+                <div class="mockup-dots">
+                  <span class="m-dot red"></span>
+                  <span class="m-dot yellow"></span>
+                  <span class="m-dot green"></span>
+                </div>
+                <div class="mockup-path">MIPS://assembler.py -> vhdl/datapath.vhd</div>
+                <div class="mockup-status">COMPILED</div>
+              </div>
+
+              <div class="mockup-screen-content">
+                <div class="mips-binary-view">
+                  <div class="mips-line">
+                    <span class="mips-asm">add $t0, $s1, $s2</span>
+                    <span class="mips-arrow">➔</span>
+                    <span class="mips-hex">0x02324020</span>
+                    <span class="mips-bin">000000 10001 10010 01000 00000 100000</span>
+                  </div>
+                  <div class="mips-line">
+                    <span class="mips-asm">lw  $t1, 4($sp)</span>
+                    <span class="mips-arrow">➔</span>
+                    <span class="mips-hex">0x8FB90004</span>
+                    <span class="mips-bin">100011 11101 11001 0000000000000100</span>
+                  </div>
+                  <div class="mips-line">
+                    <span class="mips-asm">beq $t0, $zero, L1</span>
+                    <span class="mips-arrow">➔</span>
+                    <span class="mips-hex">0x11000008</span>
+                    <span class="mips-bin">000100 01000 00000 0000000000001000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Meta & Detailed Info -->
+            <div class="project-details">
+              <h3 class="project-title">
+                MIPS Assembler & Processor Architecture Project
+              </h3>
+              <p class="project-description">
+                Developed a full custom <strong>Python-based MIPS Assembler</strong> capable of parsing assembly instructions (R, I, and J formats), performing two-pass symbol resolution, and translating assembly into binary and hexadecimal machine code. Designed complementary <strong>VHDL hardware description modules</strong> modeling processor datapaths, ALU controllers, and register files.
+              </p>
+
+              <!-- Tech Stack Badges -->
+              <div class="tech-tags-list">
+                <span class="tech-tag"><i data-lucide="terminal" class="icon-xs"></i> MIPS Assembly</span>
+                <span class="tech-tag"><i data-lucide="code" class="icon-xs"></i> Python</span>
+                <span class="tech-tag"><i data-lucide="cpu" class="icon-xs"></i> VHDL</span>
+                <span class="tech-tag"><i data-lucide="binary" class="icon-xs"></i> Computer Architecture</span>
+              </div>
+
+              <!-- Action Link to Official Repository -->
+              <div class="project-actions">
+                <a href="https://github.com/AbdelrhmanShehata/mips-assemply-project-" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-primary">
+                  <i data-lucide="github" class="btn-icon"></i>
+                  <span>INSPECT MIPS REPOSITORY</span>
+                  <i data-lucide="external-link" class="btn-icon-right"></i>
+                </a>
+              </div>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 05. EXPERIENCE, INTERNSHIPS & VOLUNTEERING -->
+    <section class="section-padding bg-darker" id="experience">
+      <div class="section-container">
+
+        <div class="section-header-badge">
+          <span class="section-code">[SEC-05]</span>
+          <span class="section-badge-text">CAREER TELEMETRY & RECORD</span>
+        </div>
+        <h2 class="section-title">Experience & <span class="neon-red-highlight">Professional Trajectory</span></h2>
+        <p class="section-subtitle">Real-world operational roles, technical instruction, and prestigious nationwide cybersecurity initiatives.</p>
+
+        <!-- Cyber Timeline Grid -->
+        <div class="cyber-timeline">
+
+          <!-- Item 1: 3C Online Coding School -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+              <div class="marker-line"></div>
+            </div>
+            <div class="timeline-content bento-glass-card">
+              <div class="timeline-header">
+                <div>
+                  <span class="timeline-role">Coding Instructor</span>
+                  <h3 class="timeline-company">3C Online Coding School</h3>
+                </div>
+                <div class="timeline-badge">INSTRUCTION & MENTORSHIP</div>
+              </div>
+              <p class="timeline-desc">
+                Instructing aspiring programmers and students in core computational thinking, algorithmic design in Python and C++, and building foundational software development and problem-solving habits.
+              </p>
+              <div class="timeline-tags">
+                <span>Python</span><span>C++</span><span>Data Structures</span><span>Algorithmic Thinking</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: DEPI - MCIT -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+              <div class="marker-line"></div>
+            </div>
+            <div class="timeline-content bento-glass-card featured-timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <span class="timeline-role">Cyber Security Incident Response Analyst Trainee</span>
+                  <h3 class="timeline-company">Digital Egypt Pioneers Initiative (DEPI) - MCIT</h3>
+                </div>
+                <div class="timeline-badge national-initiative">MINISTRY OF COMMUNICATIONS & IT</div>
+              </div>
+              <p class="timeline-desc">
+                Selected for the highly competitive nationwide initiative sponsored by the Ministry of Communications and Information Technology (MCIT). Undergoing rigorous hands-on training in incident response methodologies, digital forensics, enterprise SOC operations, network telemetry analysis, and threat containment.
+              </p>
+              <div class="timeline-tags">
+                <span>Incident Response</span><span>SOC Workflows</span><span>Log Analysis</span><span>Threat Containment</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Sprints & Cisco Networking Academy -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+              <div class="marker-line"></div>
+            </div>
+            <div class="timeline-content bento-glass-card">
+              <div class="timeline-header">
+                <div>
+                  <span class="timeline-role">Cybersecurity Trainee</span>
+                  <h3 class="timeline-company">Sprints & Cisco Networking Academy</h3>
+                </div>
+                <div class="timeline-badge">ACADEMY & TRAINING</div>
+              </div>
+              <p class="timeline-desc">
+                Completed intensive security curriculum encompassing network protocols, switching and routing security, defense-in-depth methodologies, firewall implementations, and enterprise network hardening.
+              </p>
+              <div class="timeline-tags">
+                <span>CCNA Routing & Switching</span><span>Firewall Config</span><span>Network Protocols</span><span>Defense Architectures</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: GDG Benha University -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+            </div>
+            <div class="timeline-content bento-glass-card">
+              <div class="timeline-header">
+                <div>
+                  <span class="timeline-role">Cybersecurity Technical Member</span>
+                  <h3 class="timeline-company">Google Developer Groups on Campus (GDG) - Benha University</h3>
+                </div>
+                <div class="timeline-badge">COMMUNITY & TECHNICAL LEADERSHIP</div>
+              </div>
+              <p class="timeline-desc">
+                Actively contributing to technical workshops, hands-on CTF challenges, and awareness sessions within the university engineering community to foster defensive security mindsets and secure development practices.
+              </p>
+              <div class="timeline-tags">
+                <span>Security Workshops</span><span>Peer Mentoring</span><span>CTF Competitions</span><span>Cyber Awareness</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 06. FOOTER / CONTACT TRANSMISSION CHANNELS -->
+    <section class="section-padding contact-section" id="contact">
+      <div class="section-container">
+
+        <div class="section-header-badge">
+          <span class="section-code">[SEC-06]</span>
+          <span class="section-badge-text">DIRECT COMMS & ENCRYPTED CHANNELS</span>
+        </div>
+        <h2 class="section-title">Initiate <span class="neon-red-highlight">Transmission</span></h2>
+        <p class="section-subtitle">Reach out directly for SOC analyst roles, detection engineering opportunities, or collaborative security research.</p>
+
+        <div class="contact-grid">
+
+          <!-- Left: Official Contact Dossier Cards -->
+          <div class="contact-dossier-column">
+            
+            <!-- Email Channel -->
+            <a href="mailto:abdoshehatalil9@gmail.com" class="comms-card bento-glass-card">
+              <div class="comms-icon">
+                <i data-lucide="mail"></i>
+              </div>
+              <div class="comms-meta">
+                <span class="comms-type">OFFICIAL EMAIL CHANNEL</span>
+                <span class="comms-val">abdoshehatalil9@gmail.com</span>
+                <span class="comms-action">Click to send direct email ➔</span>
+              </div>
+              <button type="button" class="copy-btn" data-copy="abdoshehatalil9@gmail.com" title="Copy Email to Clipboard" onclick="event.preventDefault(); copyToClipboard('abdoshehatalil9@gmail.com', this)">
+                <i data-lucide="copy"></i>
+              </button>
+            </a>
+
+            <!-- Phone Channel -->
+            <a href="tel:+201061624475" class="comms-card bento-glass-card">
+              <div class="comms-icon">
+                <i data-lucide="phone"></i>
+              </div>
+              <div class="comms-meta">
+                <span class="comms-type">DIRECT VOICE / SECURE LINE</span>
+                <span class="comms-val">+201061624475</span>
+                <span class="comms-action">Click to initiate phone call ➔</span>
+              </div>
+              <button type="button" class="copy-btn" data-copy="+201061624475" title="Copy Phone to Clipboard" onclick="event.preventDefault(); copyToClipboard('+201061624475', this)">
+                <i data-lucide="copy"></i>
+              </button>
+            </a>
+
+            <!-- Location Coordinates -->
+            <div class="comms-card bento-glass-card non-interactive">
+              <div class="comms-icon">
+                <i data-lucide="map-pin"></i>
+              </div>
+              <div class="comms-meta">
+                <span class="comms-type">GEOGRAPHIC BASE OF OPERATIONS</span>
+                <span class="comms-val">Benha - Alqaliobia, Egypt</span>
+                <span class="comms-action">Available for On-site & Global Remote SOC Roles</span>
+              </div>
+            </div>
+
+            <!-- Social / Network Grid -->
+            <div class="social-channels-grid">
+              
+              <a href="https://www.linkedin.com/in/abdelrahman-shehata-14b53530a" target="_blank" rel="noopener noreferrer" class="social-btn linkedin-btn bento-glass-card">
+                <i data-lucide="linkedin" class="social-icon"></i>
+                <div class="social-meta">
+                  <span class="social-title">LinkedIn Network</span>
+                  <span class="social-handle">abdelrahman-shehata-14b53530a</span>
+                </div>
+                <i data-lucide="external-link" class="arrow-ext"></i>
+              </a>
+
+              <a href="https://github.com/AbdelrhmanShehata" target="_blank" rel="noopener noreferrer" class="social-btn github-btn bento-glass-card">
+                <i data-lucide="github" class="social-icon"></i>
+                <div class="social-meta">
+                  <span class="social-title">GitHub Profile</span>
+                  <span class="social-handle">@AbdelrhmanShehata</span>
+                </div>
+                <i data-lucide="external-link" class="arrow-ext"></i>
+              </a>
+
+            </div>
+
+          </div>
+
+          <!-- Right: Interactive Cyber Transmission Terminal Form -->
+          <div class="contact-form-column">
+            <div class="transmission-terminal-card bento-glass-card">
+              <div class="corner-bracket top-left"></div>
+              <div class="corner-bracket top-right"></div>
+              <div class="corner-bracket bottom-left"></div>
+              <div class="corner-bracket bottom-right"></div>
+
+              <div class="terminal-bar">
+                <div class="bar-left">
+                  <span class="terminal-traffic-dot"></span>
+                  <span class="bar-title">TRANSMISSION DISPATCH // DIRECT COMMS</span>
+                </div>
+                <div class="bar-right">
+                  <span class="enc-tag"><i data-lucide="lock" class="icon-xs"></i> 256-BIT RSA READY</span>
+                </div>
+              </div>
+
+              <form id="contact-dispatch-form" class="cyber-form">
+                <div class="form-group">
+                  <label for="sender-name">SENDER IDENTIFIER <span class="req">*</span></label>
+                  <div class="input-wrapper">
+                    <i data-lucide="user" class="input-icon"></i>
+                    <input type="text" id="sender-name" name="name" required placeholder="e.g. Commander / Recruiter / Colleague">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="sender-email">RETURN FREQUENCY (EMAIL) <span class="req">*</span></label>
+                  <div class="input-wrapper">
+                    <i data-lucide="at-sign" class="input-icon"></i>
+                    <input type="email" id="sender-email" name="email" required placeholder="e.g. recruiter@security-corp.com">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="subject-matter">OPERATION SUBJECT <span class="req">*</span></label>
+                  <div class="input-wrapper">
+                    <i data-lucide="terminal" class="input-icon"></i>
+                    <input type="text" id="subject-matter" name="subject" required placeholder="e.g. SOC Analyst Position / Engineering Collab">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="message-payload">DISPATCH PAYLOAD (MESSAGE) <span class="req">*</span></label>
+                  <div class="input-wrapper">
+                    <textarea id="message-payload" name="message" rows="4" required placeholder="Enter transmission details or inquiry..."></textarea>
+                  </div>
+                </div>
+
+                <button type="submit" class="cyber-btn cyber-btn-primary full-width" id="dispatch-submit-btn">
+                  <i data-lucide="send" class="btn-icon"></i>
+                  <span>DISPATCH TRANSMISSION</span>
+                </button>
+              </form>
+
+              <div id="form-feedback" class="form-feedback" style="display: none;"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="cyber-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="foot-brand">ABDELRAHMAN SHEHATA ELSAYED</span>
+        <span class="foot-desc">Cybersecurity & SOC Analyst | Benha University</span>
+      </div>
+      <div class="footer-center">
+        <span class="foot-status">
+          <span class="pulse-dot"></span>
+          ENCRYPTED SOC ARCHITECTURE • DRIBBBLE CYBERPUNK EDITION
+        </span>
+      </div>
+      <div class="footer-right">
+        <a href="#hero" class="back-to-top" title="Back to Top">
+          <span>BACK TO TOP</span>
+          <i data-lucide="arrow-up" class="icon-xs"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE CLI TERMINAL DRAWER (MODAL) -->
+  <div class="terminal-drawer-modal" id="terminal-modal" aria-hidden="true">
+    <div class="terminal-overlay" id="terminal-backdrop"></div>
+    <div class="terminal-window bento-glass-card">
+      
+      <div class="terminal-window-header">
+        <div class="header-traffic-lights">
+          <button class="win-btn win-close" id="close-terminal-btn" title="Close Terminal"></button>
+          <button class="win-btn win-min"></button>
+          <button class="win-btn win-max"></button>
+        </div>
+        <div class="win-title">
+          <i data-lucide="terminal" class="icon-xs"></i>
+          <span>shehata@soc-analyst-station: ~ (v2.4.0-release)</span>
+        </div>
+        <div class="win-actions">
+          <span class="key-hint">ESC or Type 'exit' to close</span>
+        </div>
+      </div>
+
+      <div class="terminal-body" id="terminal-output">
+        <div class="term-line banner">
+          ╔══════════════════════════════════════════════════════════════════╗
+          ║  ABDELRAHMAN SHEHATA ELSAYED - SOC ANALYST INTERACTIVE SHELL    ║
+          ║  Type 'help' for available commands, 'clear' to reset terminal.  ║
+          ╚══════════════════════════════════════════════════════════════════╝
+        </div>
+        <div class="term-line info">System booted. Type <span class="term-highlight">'help'</span> or <span class="term-highlight">'projects'</span> or <span class="term-highlight">'contact'</span>.</div>
+      </div>
+
+      <div class="terminal-input-row">
+        <span class="prompt-user">shehata@soc:~$</span>
+        <input type="text" id="terminal-cli-input" autofocus autocomplete="off" spellcheck="false" placeholder="Type a command (e.g. help, skills, projects, contact, clear)...">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESUME / DOSSIER QUICK VIEW MODAL -->
+  <div class="cv-modal" id="cv-quick-modal" aria-hidden="true">
+    <div class="cv-backdrop" id="cv-backdrop"></div>
+    <div class="cv-card bento-glass-card">
+      <div class="cv-header">
+        <div class="cv-header-title">
+          <i data-lucide="file-text"></i>
+          <span>ABDELRAHMAN SHEHATA ELSAYED - PROFESSIONAL RESUME</span>
+        </div>
+        <button class="cv-close-btn" id="close-cv-modal">&times;</button>
+      </div>
+      <div class="cv-body">
+        <div class="cv-section">
+          <h4>// EXECUTIVE PROFILE</h4>
+          <p>Computer and Control Systems Engineering student at Benha University (GPA: 3.47) and Cybersecurity Incident Response Analyst specializing in SIEM architecture, detection engineering, and SOC operations.</p>
+        </div>
+        <div class="cv-section">
+          <h4>// CONTACT & LOCATION</h4>
+          <p><strong>Email:</strong> abdoshehatalil9@gmail.com | <strong>Phone:</strong> +201061624475 | <strong>Location:</strong> Benha - Alqaliobia, Egypt</p>
+        </div>
+        <div class="cv-section">
+          <h4>// CORE PROJECTS</h4>
+          <ul>
+            <li><strong>SIEM Detection Engineering, Alert Triage & SOC Operations:</strong> Wazuh, Splunk, Elastic SIEM, Ollama AI, Sysmon, TheHive.</li>
+            <li><strong>MIPS Assembler & Processor Architecture:</strong> Custom Python assembler & VHDL hardware modules.</li>
+          </ul>
+        </div>
+        <div class="cv-actions">
+          <a href="mailto:abdoshehatalil9@gmail.com?subject=Requesting%20Full%20CV%20-%20Abdelrahman%20Shehata" class="cyber-btn cyber-btn-primary">
+            <i data-lucide="mail"></i>
+            <span>REQUEST FULL PDF VIA EMAIL</span>
+          </a>
+          <button class="cyber-btn cyber-btn-secondary" onclick="window.print()">
+            <i data-lucide="printer"></i>
+            <span>PRINT DOSSIER</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATIONS -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- SCRIPTS -->
+  <script src="js/radar.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // Initialize Lucide Icons
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
