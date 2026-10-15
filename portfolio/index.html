@@ -120,9 +120,23 @@
           
           <!-- Hero Left: Typography & CTAs -->
           <div class="hero-dossier">
-            <div class="hero-pill-badge">
-              <span class="badge-tag">INCIDENT RESPONSE & SOC</span>
-              <span class="badge-sub">MITRE ATT&CK ALIGNED</span>
+            <!-- Operator Identity Header with Avatar -->
+            <div class="hero-identity-header">
+              <div class="hero-avatar-frame">
+                <img src="assets/images/profile.jpg" alt="Abdelrahman Shehata Elsayed - Cybersecurity Analyst" class="hero-avatar-img">
+                <span class="avatar-radar-ring"></span>
+                <span class="avatar-live-pulse" title="Analyst Status: Online"></span>
+              </div>
+              <div class="hero-badge-stack">
+                <div class="hero-pill-badge">
+                  <span class="badge-tag">INCIDENT RESPONSE & SOC</span>
+                  <span class="badge-sub">MITRE ATT&CK ALIGNED</span>
+                </div>
+                <div class="avatar-verified-text">
+                  <i data-lucide="shield-check" class="icon-xs"></i>
+                  <span>VERIFIED OPERATOR // BENHA UNIV</span>
+                </div>
+              </div>
             </div>
 
             <h1 class="hero-title">
@@ -274,7 +288,48 @@
         <!-- Bento Grid for About -->
         <div class="about-bento-grid">
 
-          <!-- Bento Card 1: Core Summary (Spans 2 cols) -->
+          <!-- Bento Card 1: Operator Biometric Portrait & ID Badge -->
+          <div class="bento-glass-card analyst-portrait-card">
+            <div class="corner-bracket top-left"></div>
+            <div class="corner-bracket top-right"></div>
+            <div class="corner-bracket bottom-left"></div>
+            <div class="corner-bracket bottom-right"></div>
+
+            <div class="portrait-hud-header">
+              <span class="portrait-badge"><i data-lucide="fingerprint" class="icon-xs"></i> BIOMETRIC DOSSIER</span>
+              <span class="portrait-code">SEC-891 // OPERATOR</span>
+            </div>
+
+            <div class="portrait-image-container">
+              <img src="assets/images/profile.jpg" alt="Abdelrahman Shehata Elsayed - Professional Portrait" class="analyst-portrait-img">
+              <div class="portrait-scanline-sweep"></div>
+              <div class="portrait-gradient-overlay"></div>
+              
+              <!-- Floating Reticle Overlay Elements -->
+              <div class="portrait-reticle top-left-reticle">+</div>
+              <div class="portrait-reticle top-right-reticle">+</div>
+              <div class="portrait-reticle bottom-left-reticle">+</div>
+              <div class="portrait-reticle bottom-right-reticle">+</div>
+
+              <div class="portrait-hud-footer">
+                <span class="p-name">ABDELRAHMAN SHEHATA</span>
+                <span class="p-status"><span class="pulse-dot"></span> TIER-1 INCIDENT RESPONSE</span>
+              </div>
+            </div>
+
+            <div class="portrait-meta-strip">
+              <div class="meta-item">
+                <span class="m-label">CLEARANCE:</span>
+                <span class="m-val glow-white">CONFIDENTIAL</span>
+              </div>
+              <div class="meta-item">
+                <span class="m-label">BASE:</span>
+                <span class="m-val">BENHA, EG</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Card 2: Core Summary (Spans 2 cols) -->
           <div class="bento-glass-card bento-span-2">
             <div class="card-accent-bar"></div>
             <div class="bento-card-content">
@@ -1176,9 +1231,15 @@
     <div class="cv-backdrop" id="cv-backdrop"></div>
     <div class="cv-card bento-glass-card">
       <div class="cv-header">
-        <div class="cv-header-title">
-          <i data-lucide="file-text"></i>
-          <span>ABDELRAHMAN SHEHATA ELSAYED - PROFESSIONAL RESUME</span>
+        <div class="cv-header-identity">
+          <div class="cv-avatar-wrap">
+            <img src="assets/images/profile.jpg" alt="Abdelrahman Shehata Elsayed" class="cv-avatar-img">
+            <span class="cv-status-dot"></span>
+          </div>
+          <div class="cv-header-title">
+            <span class="cv-name">ABDELRAHMAN SHEHATA ELSAYED</span>
+            <span class="cv-sub-title">Cybersecurity & SOC Analyst | Benha University (GPA: 3.47)</span>
+          </div>
         </div>
         <button class="cv-close-btn" id="close-cv-modal">&times;</button>
       </div>
