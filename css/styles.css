@@ -134,8 +134,21 @@ button {
 }
 
 /* ==========================================================================
-   SUBTLE BACKGROUND VISUALS (Fine dot grid, defense sweep beam & ambient aura)
+   SUBTLE BACKGROUND VISUALS (Hexagonal mesh, fine dot grid, defense sweep beam & ambient aura)
    ========================================================================== */
+.bg-hex-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='48' viewBox='0 0 28 48'%3E%3Cpath d='M14 0v8.5l14 8.08v16.17L14 40.83V48 M14 8.5L0 16.58v16.17l14 8.08' fill='none' stroke='%2338bdf8' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 28px 48px;
+  opacity: 0.06;
+}
+
 .bg-grid-overlay {
   position: fixed;
   top: 0;
@@ -537,12 +550,40 @@ button {
   letter-spacing: -0.03em;
   line-height: 1.12;
   margin-bottom: 0.75rem;
+  position: relative;
+  display: inline-block;
+  color: #f8fafc;
+  transition: all 0.3s ease;
 }
 
+.hero-name:hover {
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.25), 0 0 35px rgba(168, 85, 247, 0.2);
+  animation: cyber-subtle-glitch 0.6s ease-in-out;
+}
+
+@keyframes cyber-subtle-glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-1.5px, 0.5px); text-shadow: -1px 0 rgba(56, 189, 248, 0.4), 1px 0 rgba(168, 85, 247, 0.4); }
+  40% { transform: translate(1px, -0.5px); text-shadow: 1px 0 rgba(56, 189, 248, 0.4), -1px 0 rgba(168, 85, 247, 0.4); }
+  60% { transform: translate(-0.5px, 0.5px); text-shadow: -0.5px 0 rgba(56, 189, 248, 0.25), 0.5px 0 rgba(168, 85, 247, 0.25); }
+  80% { transform: translate(0.5px, -0.5px); }
+  100% { transform: translate(0); }
+}
+
+/* Highlight "Shehata" with modern cyan/blue gradient text with cyber-neon drop shadow */
 .highlight-text {
-  background: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #38bdf8 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 45%, #60a5fa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.45)) drop-shadow(0 0 24px rgba(14, 165, 233, 0.25));
+  position: relative;
+  display: inline-block;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.hero-name:hover .highlight-text {
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.7)) drop-shadow(0 0 32px rgba(14, 165, 233, 0.4));
+  transform: translateY(-1px);
 }
 
 /* Exactly 5-6 words job title */
@@ -878,107 +919,147 @@ button {
 }
 
 /* ==========================================================================
-   SKILLS SECTION
+   SKILLS SECTION (Modern Card Grid with Colorful SVGs)
    ========================================================================== */
-.skills-wrapper {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+.skills-card-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
 }
 
-.skill-card {
-  padding: 2rem;
+.skills-category-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.skill-card-header {
+.category-heading-row {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  padding-bottom: 0.85rem;
   border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 1.25rem;
 }
 
-.skill-icon-wrap {
-  width: 46px;
-  height: 46px;
-  border-radius: 10px;
+.category-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   background: var(--violet-soft);
   border: 1px solid rgba(168, 85, 247, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-violet);
+  flex-shrink: 0;
 }
 
-.skill-cat-title {
-  font-size: 1.25rem;
+.category-title-wrap {
+  flex: 1;
+}
+
+.category-title {
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
   margin-bottom: 0.2rem;
 }
 
-.skill-cat-sub {
-  font-size: 0.82rem;
-  color: var(--text-dim);
+.category-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 
-.skills-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.35rem;
-}
-
-.skill-entry {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.skill-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.88rem;
-}
-
-.skill-name {
-  color: var(--text-main);
-  font-weight: 500;
-}
-
-.skill-badge {
-  font-size: 0.72rem;
+.category-count-badge {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
   font-weight: 600;
-  color: var(--accent-violet);
+  color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
 }
 
-.skill-track {
-  width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 3px;
+/* Skills Grid */
+.skills-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  gap: 1.15rem;
+}
+
+/* Skill Badge Card: rounded modern dark cards, dark translucent with subtle borders */
+.skill-badge-card {
+  padding: 1.35rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 14px;
+  background: rgba(13, 17, 28, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+  position: relative;
   overflow: hidden;
 }
 
-.skill-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #7c3aed 0%, var(--accent-violet) 50%, var(--accent-cyan) 100%);
-  border-radius: 3px;
-  transition: width 0.8s ease;
+/* Hover effect: subtle border glow / slight scale translateY(-2px) as requested */
+.skill-badge-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 10px 28px -5px rgba(0, 0, 0, 0.55), 0 0 20px rgba(56, 189, 248, 0.16);
+  background: rgba(18, 24, 40, 0.88);
 }
 
-.skill-subtags {
+.skill-icon-box {
+  width: 48px;
+  height: 48px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  margin-top: 0.15rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.skill-subtags span {
-  font-size: 0.72rem;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 0.1rem 0.45rem;
-  border-radius: 4px;
+.skill-icon-box svg {
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+}
+
+.skill-badge-card:hover .skill-icon-box {
+  transform: scale(1.08);
+}
+
+.skill-card-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.25rem;
+  line-height: 1.25;
+}
+
+.skill-card-desc {
+  font-size: 0.73rem;
   color: var(--text-dim);
+  line-height: 1.35;
+  display: block;
+}
+
+.skill-badge-card:hover .skill-card-title {
+  color: #ffffff;
+}
+
+.skill-badge-card:hover .skill-card-desc {
+  color: var(--text-muted);
 }
 
 /* ==========================================================================
@@ -1654,6 +1735,26 @@ button {
   .timeline-row {
     grid-template-columns: 24px 1fr;
     gap: 0.85rem;
+  }
+
+  .skills-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.85rem;
+  }
+
+  .skill-badge-card {
+    padding: 1.15rem 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .category-heading-row {
+    flex-wrap: wrap;
   }
 }
 
