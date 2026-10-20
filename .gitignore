@@ -1,0 +1,8 @@
+# DEPI Coursework folders (keep local, not part of portfolio)
+english/
+soft skills/
+technical/
+
+# OS files
+Thumbs.db
+.DS_Store

@@ -1,0 +1,3 @@
+@echo off
+echo Opening Abdelrahman Shehata Elsayed's Portfolio Website in default browser...
+start "" "%~dp0portfolio\index.html"
