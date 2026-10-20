@@ -172,4 +172,22 @@
     });
   }
 
+  // --- Smooth Security Scroll Reveal Observer ---
+  const revealElements = document.querySelectorAll('.glass-card, .profile-card, .timeline-row, .section-header');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    revealElements.forEach((el) => {
+      el.classList.add('reveal-on-scroll');
+      observer.observe(el);
+    });
+  }
+
 })();

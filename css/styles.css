@@ -134,7 +134,7 @@ button {
 }
 
 /* ==========================================================================
-   SUBTLE BACKGROUND VISUALS (Fine dot grid & soothing ambient aura)
+   SUBTLE BACKGROUND VISUALS (Fine dot grid, defense sweep beam & ambient aura)
    ========================================================================== */
 .bg-grid-overlay {
   position: fixed;
@@ -147,6 +147,25 @@ button {
   background-image: radial-gradient(rgba(168, 85, 247, 0.08) 1px, transparent 1px);
   background-size: 32px 32px;
   opacity: 0.7;
+}
+
+/* Very faint, slow security sweep beam drifting across the background grid */
+.cyber-defense-beam {
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.02) 60%, rgba(56, 189, 248, 0.04) 90%, rgba(168, 85, 247, 0.07) 100%);
+  animation: defense-sweep 16s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  opacity: 0.7;
+}
+
+@keyframes defense-sweep {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(200vw); }
 }
 
 .ambient-glow {
@@ -164,6 +183,7 @@ button {
   right: -80px;
   background: radial-gradient(circle, rgba(168, 85, 247, 0.16) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
   opacity: 0.65;
+  animation: ambient-pulse 10s ease-in-out infinite alternate;
 }
 
 .glow-middle {
@@ -173,6 +193,7 @@ button {
   left: -120px;
   background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
   opacity: 0.5;
+  animation: ambient-pulse 12s ease-in-out infinite alternate;
 }
 
 .glow-bottom {
@@ -182,6 +203,12 @@ button {
   right: -100px;
   background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(168, 85, 247, 0.08) 50%, transparent 70%);
   opacity: 0.55;
+  animation: ambient-pulse 9s ease-in-out infinite alternate;
+}
+
+@keyframes ambient-pulse {
+  0% { transform: scale(0.96); opacity: 0.5; }
+  100% { transform: scale(1.06); opacity: 0.72; }
 }
 
 /* ==========================================================================
@@ -369,7 +396,9 @@ button {
 /* ==========================================================================
    GLASS CARDS (Soothing, Clean, Subtle Violet Edge)
    ========================================================================== */
+/* Glass Cards with Security Corner Micro-Transitions */
 .glass-card {
+  position: relative;
   background: var(--bg-card);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -377,14 +406,57 @@ button {
   border-radius: 14px;
   padding: 1.85rem;
   box-shadow: var(--shadow-card);
-  transition: all var(--transition);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-top-left-radius: 14px;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.glass-card::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-bottom-right-radius: 14px;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
 }
 
 .glass-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-card-hover);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(168, 85, 247, 0.12);
-  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 22px rgba(168, 85, 247, 0.16);
+  transform: translateY(-4px);
+}
+
+.glass-card:hover::before {
+  border-color: var(--accent-violet);
+  width: 14px;
+  height: 14px;
+}
+
+.glass-card:hover::after {
+  border-color: var(--accent-cyan);
+  width: 14px;
+  height: 14px;
 }
 
 /* Section Headers */
@@ -450,6 +522,13 @@ button {
   border-radius: 50%;
   background-color: var(--accent-emerald);
   box-shadow: 0 0 10px var(--accent-emerald);
+  animation: gentle-status-pulse 2.2s infinite;
+}
+
+@keyframes gentle-status-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 .hero-name {
@@ -534,6 +613,31 @@ button {
   height: 380px;
   background: #090e1a;
   overflow: hidden;
+}
+
+.profile-image-box::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-violet), var(--accent-cyan), transparent);
+  box-shadow: 0 0 14px var(--accent-violet);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.profile-card:hover .profile-image-box::after {
+  opacity: 0.9;
+  animation: photo-scan 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes photo-scan {
+  0% { top: 0%; opacity: 0; }
+  15% { opacity: 0.9; }
+  85% { opacity: 0.9; }
+  100% { top: 100%; opacity: 0; }
 }
 
 .profile-img {
@@ -1551,4 +1655,19 @@ button {
     grid-template-columns: 24px 1fr;
     gap: 0.85rem;
   }
+}
+
+/* ==========================================================================
+   SMOOTH SECURITY SCROLL REVEAL TRANSITIONS
+   ========================================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
