@@ -1,35 +1,41 @@
 /* ==========================================================================
    ABDELRAHMAN SHEHATA ELSAYED - PERSONAL PORTFOLIO
-   THEME: MODERN CALM DARK MODE (SOOTHING SLATE & SKY BLUE ACCENTS)
-   EYE-FRIENDLY, ELEGANT, UNCLUTTERED, PROFESSIONAL
+   THEME: MODERN EYE-FRIENDLY MIDNIGHT VIOLET & SLATE
+   AESTHETIC: CLEAN, SLEEK, CALM, HIGH-END DEVELOPER & SOC UX
    ========================================================================== */
 
 /* --- Design Tokens & Variables --- */
 :root {
-  /* Eye-friendly Dark Palette (Deep Slate & Navy Charcoal) */
-  --bg-primary: #0a0e17;
-  --bg-secondary: #0f172a;
-  --bg-surface: #111827;
-  --bg-card: rgba(19, 27, 46, 0.75);
-  --bg-card-hover: rgba(28, 38, 64, 0.88);
-  --bg-input: #0a0e17;
+  /* Eye-friendly Dark Palette (Deep Slate Navy & Obsidian) */
+  --bg-primary: #0a0d14;
+  --bg-secondary: #0d111c;
+  --bg-surface: #111726;
+  --bg-card: rgba(17, 24, 39, 0.72);
+  --bg-card-hover: rgba(26, 36, 58, 0.85);
+  --bg-input: #080b12;
 
-  /* Calming Accents (Soft Sky Blue & Gentle Emerald) */
+  /* Violet & Indigo Accents (Sleek, Calming & Modern) */
+  --accent-violet: #a855f7;
+  --accent-violet-dark: #7c3aed;
+  --accent-indigo: #6366f1;
   --accent-cyan: #38bdf8;
-  --accent-blue: #0284c7;
   --accent-emerald: #10b981;
-  --accent-soft: rgba(56, 189, 248, 0.12);
-  --accent-glow: rgba(56, 189, 248, 0.25);
 
-  /* Typography Colors (Clean, High Readability, No Glare) */
+  /* Translucent Glows & Tints */
+  --violet-soft: rgba(168, 85, 247, 0.12);
+  --violet-glow: rgba(168, 85, 247, 0.28);
+  --cyan-soft: rgba(56, 189, 248, 0.1);
+
+  /* Typography Colors (Gentle on the eyes, pure readability) */
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
 
   /* Borders & Glassmorphism */
-  --border-subtle: rgba(148, 163, 184, 0.12);
-  --border-card: rgba(56, 189, 248, 0.16);
-  --border-focus: #38bdf8;
+  --border-subtle: rgba(148, 163, 184, 0.1);
+  --border-card: rgba(168, 85, 247, 0.2);
+  --border-card-hover: rgba(168, 85, 247, 0.45);
+  --border-focus: #a855f7;
 
   /* Typography */
   --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -37,9 +43,9 @@
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Transitions & Shadows */
-  --transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.35);
-  --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.15);
+  --transition: 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 25px rgba(168, 85, 247, 0.18);
 }
 
 /* --- Base & Reset --- */
@@ -75,16 +81,16 @@ body {
   background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #1e2638;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-cyan);
+  background: var(--accent-violet);
 }
 
 ::selection {
-  background: var(--accent-cyan);
-  color: #0a0e17;
+  background: var(--accent-violet);
+  color: #ffffff;
 }
 
 /* Typography */
@@ -113,38 +119,69 @@ button {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .section-padding {
   padding: 5.5rem 0;
+  position: relative;
+  z-index: 2;
 }
 
 .bg-surface {
-  background: linear-gradient(180deg, var(--bg-primary) 0%, #0d1322 50%, var(--bg-primary) 100%);
+  background: linear-gradient(180deg, var(--bg-primary) 0%, #0d121f 50%, var(--bg-primary) 100%);
 }
 
-/* Ambient Subtle Glows (Gentle, Relaxing) */
+/* ==========================================================================
+   SUBTLE BACKGROUND VISUALS (Fine dot grid & soothing ambient aura)
+   ========================================================================== */
+.bg-grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(168, 85, 247, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.7;
+}
+
 .ambient-glow {
   position: fixed;
-  width: 550px;
-  height: 550px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
   filter: blur(150px);
-  opacity: 0.45;
 }
 
 .glow-top {
+  width: 600px;
+  height: 600px;
   top: -150px;
-  right: -100px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, transparent 70%);
+  right: -80px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.16) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
+  opacity: 0.65;
+}
+
+.glow-middle {
+  width: 500px;
+  height: 500px;
+  top: 40%;
+  left: -120px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+  opacity: 0.5;
 }
 
 .glow-bottom {
-  bottom: 50px;
-  left: -150px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+  width: 550px;
+  height: 550px;
+  bottom: 0px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(168, 85, 247, 0.08) 50%, transparent 70%);
+  opacity: 0.55;
 }
 
 /* ==========================================================================
@@ -155,11 +192,11 @@ button {
   top: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(10, 14, 23, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(10, 13, 20, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 0.9rem 0;
+  padding: 0.95rem 0;
   transition: all var(--transition);
 }
 
@@ -179,13 +216,18 @@ button {
 }
 
 .brand-avatar {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid var(--accent-cyan);
-  box-shadow: 0 0 12px var(--accent-glow);
+  border: 2px solid var(--accent-violet);
+  box-shadow: 0 0 14px var(--violet-glow);
   flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.nav-brand:hover .brand-avatar {
+  transform: scale(1.05);
 }
 
 .brand-img {
@@ -212,7 +254,7 @@ button {
 .brand-tag {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
 }
 
 .nav-links {
@@ -226,7 +268,7 @@ button {
   font-weight: 500;
   color: var(--text-muted);
   position: relative;
-  padding: 0.3rem 0;
+  padding: 0.35rem 0;
   transition: color var(--transition);
 }
 
@@ -241,9 +283,9 @@ button {
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--accent-cyan);
+  background: linear-gradient(90deg, var(--accent-violet), var(--accent-cyan));
   border-radius: 2px;
-  box-shadow: 0 0 8px var(--accent-glow);
+  box-shadow: 0 0 10px var(--violet-glow);
 }
 
 .nav-actions {
@@ -268,7 +310,7 @@ button {
 }
 
 /* ==========================================================================
-   BUTTONS
+   BUTTONS (Sleek Violet Gradient & Smooth Micro-Interactions)
    ========================================================================== */
 .btn {
   display: inline-flex;
@@ -277,53 +319,36 @@ button {
   gap: 0.55rem;
   font-size: 0.9rem;
   font-weight: 600;
-  padding: 0.75rem 1.4rem;
+  padding: 0.75rem 1.45rem;
   border-radius: 8px;
   transition: all var(--transition);
   cursor: pointer;
 }
 
 .btn-primary {
-  background: var(--accent-cyan);
-  color: #0a0e17;
-  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.25);
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(168, 85, 247, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .btn-primary:hover {
-  background: #7dd3fc;
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+  background: linear-gradient(135deg, #c084fc 0%, #8b5cf6 100%);
+  box-shadow: 0 6px 24px rgba(168, 85, 247, 0.45);
   transform: translateY(-2px);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-main);
   border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(8px);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--accent-cyan);
-  transform: translateY(-2px);
-}
-
-.btn-icon-link {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-muted);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition);
-}
-
-.btn-icon-link:hover {
-  color: var(--accent-cyan);
-  border-color: var(--accent-cyan);
-  background: var(--accent-soft);
+  background: rgba(168, 85, 247, 0.1);
+  border-color: var(--accent-violet);
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.2);
   transform: translateY(-2px);
 }
 
@@ -342,7 +367,7 @@ button {
 }
 
 /* ==========================================================================
-   GLASS CARDS (Soothing, Clean, Elegant)
+   GLASS CARDS (Soothing, Clean, Subtle Violet Edge)
    ========================================================================== */
 .glass-card {
   background: var(--bg-card);
@@ -350,15 +375,15 @@ button {
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-subtle);
   border-radius: 14px;
-  padding: 1.8rem;
+  padding: 1.85rem;
   box-shadow: var(--shadow-card);
   transition: all var(--transition);
 }
 
 .glass-card:hover {
   background: var(--bg-card-hover);
-  border-color: var(--border-card);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  border-color: var(--border-card-hover);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(168, 85, 247, 0.12);
   transform: translateY(-3px);
 }
 
@@ -371,7 +396,7 @@ button {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
@@ -390,12 +415,12 @@ button {
 }
 
 /* ==========================================================================
-   HERO SECTION (Concise Title, Clean Layout, Real Photo Card)
+   HERO SECTION (Concise, Elegant, Real Photo Card, No Clutter)
    ========================================================================== */
 .hero-section {
-  padding: 5rem 0 6rem 0;
+  padding: 5.5rem 0 6rem 0;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-grid {
@@ -428,7 +453,7 @@ button {
 }
 
 .hero-name {
-  font-size: 3.3rem;
+  font-size: 3.4rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.12;
@@ -436,7 +461,9 @@ button {
 }
 
 .highlight-text {
-  color: var(--accent-cyan);
+  background: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Exactly 5-6 words job title */
@@ -457,16 +484,11 @@ button {
   max-width: 560px;
 }
 
-.hero-summary strong {
-  color: var(--text-main);
-  font-weight: 600;
-}
-
 .hero-cta-group {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1rem;
   margin-bottom: 2rem;
 }
 
@@ -484,7 +506,7 @@ button {
   font-size: 0.82rem;
   color: var(--text-dim);
   background: rgba(255, 255, 255, 0.03);
-  padding: 0.3rem 0.65rem;
+  padding: 0.35rem 0.7rem;
   border-radius: 6px;
   border: 1px solid var(--border-subtle);
 }
@@ -495,14 +517,15 @@ button {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-card);
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), var(--shadow-glow);
-  transition: transform var(--transition);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), var(--shadow-glow);
+  transition: transform var(--transition), border-color var(--transition);
 }
 
 .profile-card:hover {
   transform: translateY(-4px);
+  border-color: var(--border-card-hover);
 }
 
 .profile-image-box {
@@ -532,7 +555,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, transparent 50%, rgba(10, 14, 23, 0.95) 100%);
+  background: linear-gradient(180deg, transparent 50%, rgba(10, 13, 20, 0.95) 100%);
   pointer-events: none;
 }
 
@@ -555,7 +578,7 @@ button {
 
 .profile-tag-bottom .p-sub {
   font-size: 0.84rem;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -565,7 +588,7 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 1rem 1.25rem;
-  background: rgba(10, 14, 23, 0.7);
+  background: rgba(10, 13, 20, 0.7);
   border-top: 1px solid var(--border-subtle);
   gap: 0.5rem;
 }
@@ -619,7 +642,7 @@ button {
 .card-icon {
   width: 24px;
   height: 24px;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
 }
 
 .card-icon-header h3 {
@@ -645,9 +668,9 @@ button {
 }
 
 .tag {
-  background: var(--accent-soft);
-  color: var(--accent-cyan);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: var(--violet-soft);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.25);
   padding: 0.35rem 0.75rem;
   border-radius: 6px;
   font-size: 0.82rem;
@@ -671,8 +694,8 @@ button {
 }
 
 .gpa-badge {
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.25);
   border-radius: 8px;
   padding: 0.85rem;
   display: flex;
@@ -690,7 +713,7 @@ button {
 
 .gpa-label {
   font-size: 0.8rem;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
 }
 
 .edu-location {
@@ -719,7 +742,7 @@ button {
 .list-icon {
   width: 17px;
   height: 17px;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
   flex-shrink: 0;
   margin-top: 3px;
 }
@@ -742,7 +765,7 @@ button {
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
 }
 
 .stat-lbl {
@@ -776,12 +799,12 @@ button {
   width: 46px;
   height: 46px;
   border-radius: 10px;
-  background: var(--accent-soft);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: var(--violet-soft);
+  border: 1px solid rgba(168, 85, 247, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
 }
 
 .skill-cat-title {
@@ -821,7 +844,7 @@ button {
 .skill-badge {
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
 }
 
 .skill-track {
@@ -834,7 +857,7 @@ button {
 
 .skill-fill {
   height: 100%;
-  background: linear-gradient(90deg, #0284c7 0%, var(--accent-cyan) 100%);
+  background: linear-gradient(90deg, #7c3aed 0%, var(--accent-violet) 50%, var(--accent-cyan) 100%);
   border-radius: 3px;
   transition: width 0.8s ease;
 }
@@ -879,9 +902,9 @@ button {
 .badge-featured {
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--accent-cyan);
-  background: var(--accent-soft);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: var(--accent-violet);
+  background: var(--violet-soft);
+  border: 1px solid rgba(168, 85, 247, 0.25);
   padding: 0.3rem 0.7rem;
   border-radius: 20px;
 }
@@ -956,8 +979,8 @@ button {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--accent-cyan);
-  box-shadow: 0 0 10px var(--accent-cyan);
+  background: var(--accent-violet);
+  box-shadow: 0 0 12px var(--accent-violet);
   border: 2px solid var(--bg-primary);
   margin-top: 1.6rem;
   z-index: 2;
@@ -966,7 +989,7 @@ button {
 .t-line {
   flex-grow: 1;
   width: 2px;
-  background: linear-gradient(180deg, var(--accent-cyan) 0%, rgba(56, 189, 248, 0.1) 100%);
+  background: linear-gradient(180deg, var(--accent-violet) 0%, rgba(168, 85, 247, 0.1) 100%);
   margin-top: 0.4rem;
 }
 
@@ -975,8 +998,8 @@ button {
 }
 
 .highlighted-timeline {
-  border-color: rgba(56, 189, 248, 0.35);
-  background: rgba(20, 32, 54, 0.8);
+  border-color: rgba(168, 85, 247, 0.35);
+  background: rgba(24, 20, 42, 0.8);
 }
 
 .timeline-title-row {
@@ -990,7 +1013,7 @@ button {
 .timeline-role {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
   display: block;
 }
 
@@ -1009,9 +1032,9 @@ button {
 }
 
 .highlight-type {
-  background: var(--accent-soft);
-  color: var(--accent-cyan);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: var(--violet-soft);
+  color: var(--accent-violet);
+  border: 1px solid rgba(168, 85, 247, 0.3);
 }
 
 .timeline-text {
@@ -1066,12 +1089,12 @@ button {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: var(--accent-soft);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: var(--violet-soft);
+  border: 1px solid rgba(168, 85, 247, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
   flex-shrink: 0;
 }
 
@@ -1097,7 +1120,7 @@ button {
 
 .c-hint {
   font-size: 0.78rem;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
 }
 
 .btn-copy {
@@ -1114,9 +1137,9 @@ button {
 }
 
 .btn-copy:hover {
-  background: var(--accent-soft);
-  color: var(--accent-cyan);
-  border-color: var(--accent-cyan);
+  background: var(--violet-soft);
+  color: var(--accent-violet);
+  border-color: var(--accent-violet);
 }
 
 .social-row {
@@ -1135,7 +1158,7 @@ button {
 .social-icon {
   width: 28px;
   height: 28px;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
   flex-shrink: 0;
 }
 
@@ -1208,9 +1231,9 @@ button {
 
 .clean-form input:focus, .clean-form textarea:focus {
   outline: none;
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 14px var(--accent-glow);
-  background: rgba(15, 23, 42, 0.9);
+  border-color: var(--accent-violet);
+  box-shadow: 0 0 16px var(--violet-glow);
+  background: rgba(17, 24, 39, 0.95);
 }
 
 .form-status {
@@ -1231,8 +1254,10 @@ button {
    ========================================================================== */
 .footer {
   border-top: 1px solid var(--border-subtle);
-  background: #080b12;
+  background: #070910;
   padding: 2rem 0;
+  position: relative;
+  z-index: 2;
 }
 
 .footer-content {
@@ -1268,8 +1293,8 @@ button {
 }
 
 .btn-back-top:hover {
-  color: var(--accent-cyan);
-  border-color: var(--accent-cyan);
+  color: var(--accent-violet);
+  border-color: var(--accent-violet);
 }
 
 /* ==========================================================================
@@ -1301,7 +1326,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(5, 8, 14, 0.85);
+  background: rgba(5, 7, 12, 0.85);
   backdrop-filter: blur(8px);
 }
 
@@ -1309,9 +1334,9 @@ button {
   position: relative;
   width: 90%;
   max-width: 680px;
-  background: #0f172a;
+  background: #0e1322;
   border: 1px solid var(--border-card);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), var(--shadow-glow);
   padding: 2rem;
   z-index: 10;
   max-height: 85vh;
@@ -1338,7 +1363,7 @@ button {
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--accent-cyan);
+  border: 2px solid var(--accent-violet);
 }
 
 .modal-title {
@@ -1347,7 +1372,7 @@ button {
 
 .modal-sub {
   font-size: 0.8rem;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
 }
 
 .modal-close {
@@ -1368,7 +1393,7 @@ button {
 .modal-section h4 {
   font-size: 0.85rem;
   text-transform: uppercase;
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
   letter-spacing: 0.05em;
   margin-bottom: 0.4rem;
 }
@@ -1408,9 +1433,9 @@ button {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  background: #111827;
-  border: 1px solid var(--accent-cyan);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  background: #111726;
+  border: 1px solid var(--accent-violet);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 12px var(--violet-glow);
   padding: 0.8rem 1.25rem;
   border-radius: 8px;
   font-size: 0.85rem;
@@ -1426,7 +1451,7 @@ button {
 }
 
 .toast-icon {
-  color: var(--accent-cyan);
+  color: var(--accent-violet);
   width: 17px;
   height: 17px;
 }
@@ -1496,7 +1521,7 @@ button {
     top: 70px;
     left: 0;
     width: 100%;
-    background: rgba(10, 14, 23, 0.98);
+    background: rgba(10, 13, 20, 0.98);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-subtle);
     flex-direction: column;
