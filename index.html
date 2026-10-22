@@ -29,6 +29,11 @@
 </head>
 <body>
 
+  <!-- CYBER THEME MOUSE POINTER EFFECT -->
+  <div class="cyber-cursor-glow" id="cyber-cursor-glow" aria-hidden="true"></div>
+  <div class="cyber-cursor-ring" id="cyber-cursor-ring" aria-hidden="true"></div>
+  <div class="cyber-cursor-dot" id="cyber-cursor-dot" aria-hidden="true"></div>
+
   <!-- SUBTLE BACKGROUND VISUALS & AMBIENT VIOLET AURA -->
   <div class="bg-hex-grid" aria-hidden="true"></div>
   <div class="bg-grid-overlay" aria-hidden="true"></div>
@@ -57,6 +62,7 @@
         <a href="#skills" class="nav-link">Skills</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#experience" class="nav-link">Experience</a>
+        <a href="#education" class="nav-link">Education</a>
         <a href="#contact" class="nav-link">Contact</a>
       </div>
 
@@ -160,13 +166,19 @@
           <p class="section-subtitle">Dedicated incident response analyst bridging the gap between automated detection engineering and core computer engineering principles.</p>
         </div>
 
-        <div class="about-grid">
+        <div class="about-card-container">
           
-          <!-- Card 1: Summary -->
+          <!-- Executive Summary -->
           <div class="glass-card about-main-card">
-            <div class="card-icon-header">
-              <i data-lucide="user-check" class="card-icon"></i>
-              <h3>Executive Summary</h3>
+            <div class="about-main-header">
+              <div class="card-icon-header">
+                <i data-lucide="user-check" class="card-icon"></i>
+                <h3>Executive Profile & Defense Philosophy</h3>
+              </div>
+              <div class="about-status-tag">
+                <span class="status-dot"></span>
+                <span>Security Operations & Threat Defense</span>
+              </div>
             </div>
             <p class="card-text">
               I am a <strong>Computer and Control Systems Engineering</strong> student at <strong>Benha University (GPA: 3.47)</strong> and a passionate <strong>Cybersecurity Incident Response Analyst</strong>. My core expertise is built upon designing centralized SIEM architectures, writing custom MITRE ATT&CK correlation rules, building robust SOAR workflows, and implementing Local AI (Ollama) pipelines to automate alert triage and incident reporting.
@@ -182,30 +194,31 @@
               <span class="tag">SOAR Automations</span>
               <span class="tag">Local AI (Ollama)</span>
               <span class="tag">Computer Engineering</span>
+              <span class="tag">Detection Engineering</span>
+              <span class="tag">Endpoint Forensics</span>
             </div>
           </div>
 
-          <!-- Card 2: Education -->
-          <div class="glass-card">
-            <div class="card-icon-header">
-              <i data-lucide="graduation-cap" class="card-icon"></i>
-              <h3>Education</h3>
-            </div>
-            <div class="education-details">
-              <h4 class="edu-university">Benha University</h4>
-              <p class="edu-program">Computer and Control Systems Engineering</p>
-              <div class="gpa-badge">
-                <span class="gpa-score">3.47</span>
-                <span class="gpa-label">Cumulative GPA out of 4.0</span>
-              </div>
-              <p class="edu-location">
-                <i data-lucide="map-pin" class="icon-sm"></i> Benha - Alqaliobia, Egypt
-              </p>
-            </div>
-          </div>
+        </div>
 
-          <!-- Card 3: Defense Focus -->
-          <div class="glass-card">
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION (Clear categorization, Eye-Friendly meters) -->
+    <section class="section-padding" id="skills">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-label">Technical Matrix</span>
+          <h2 class="section-title">Skills & Capabilities</h2>
+          <p class="section-subtitle">Categorized breakdown of security operations tools, programming languages, and engineering stacks.</p>
+        </div>
+
+        <!-- Foundational Methodologies & Engineering Pillars -->
+        <div class="skills-foundations-grid">
+          
+          <!-- Card 1: Defense Methodology -->
+          <div class="glass-card foundation-card">
             <div class="card-icon-header">
               <i data-lucide="shield" class="card-icon"></i>
               <h3>Defense Methodology</h3>
@@ -230,8 +243,8 @@
             </ul>
           </div>
 
-          <!-- Card 4: Engineering Bridge -->
-          <div class="glass-card">
+          <!-- Card 2: Engineering Foundation -->
+          <div class="glass-card foundation-card">
             <div class="card-icon-header">
               <i data-lucide="cpu" class="card-icon"></i>
               <h3>Engineering Foundation</h3>
@@ -255,19 +268,6 @@
             </div>
           </div>
 
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SKILLS SECTION (Clear categorization, Eye-Friendly meters) -->
-    <section class="section-padding" id="skills">
-      <div class="container">
-        
-        <div class="section-header">
-          <span class="section-label">Technical Matrix</span>
-          <h2 class="section-title">Skills & Capabilities</h2>
-          <p class="section-subtitle">Categorized breakdown of security operations tools, programming languages, and engineering stacks.</p>
         </div>
 
         <div class="skills-card-grid-container">
@@ -826,8 +826,64 @@
       </div>
     </section>
 
+    <!-- EDUCATION SECTION (Academic Credentials) -->
+    <section class="section-padding bg-surface" id="education">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-label">Academic Credentials</span>
+          <h2 class="section-title">Education</h2>
+          <p class="section-subtitle">Formal computer and control systems engineering education at Benha University.</p>
+        </div>
+
+        <div class="education-container">
+          <div class="glass-card education-card-hero">
+            <div class="edu-top-row">
+              <div class="edu-icon-wrap">
+                <i data-lucide="graduation-cap" class="edu-main-icon"></i>
+              </div>
+              <div class="edu-heading-info">
+                <div class="edu-degree-row">
+                  <span class="edu-degree-badge">Bachelor of Science (B.Sc.)</span>
+                  <span class="edu-status-badge">Final Year • Expected 2026</span>
+                </div>
+                <h3 class="edu-university-title">Benha University</h3>
+                <p class="edu-program-title">Faculty of Engineering • Computer and Control Systems Engineering</p>
+              </div>
+              <div class="gpa-highlight-card">
+                <div class="gpa-score">3.47</div>
+                <div class="gpa-label">Cumulative GPA out of 4.0</div>
+                <div class="gpa-sub">Distinction & Academic Excellence</div>
+              </div>
+            </div>
+
+            <div class="edu-divider"></div>
+
+            <div class="edu-meta-grid">
+              <div class="edu-meta-item">
+                <span class="edu-meta-label"><i data-lucide="map-pin" class="icon-sm"></i> Location</span>
+                <span class="edu-meta-val">Benha - Alqaliobia, Egypt</span>
+              </div>
+              <div class="edu-meta-item">
+                <span class="edu-meta-label"><i data-lucide="book-open" class="icon-sm"></i> Core Technical Focus</span>
+                <div class="edu-chips">
+                  <span>Computer Architecture</span>
+                  <span>Operating Systems</span>
+                  <span>Data Structures & Algorithms</span>
+                  <span>Computer Networks</span>
+                  <span>Control Systems</span>
+                  <span>Database Management</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- CONTACT SECTION (Clean, Direct, Eye-Friendly) -->
-    <section class="section-padding bg-surface" id="contact">
+    <section class="section-padding" id="contact">
       <div class="container">
         
         <div class="section-header">

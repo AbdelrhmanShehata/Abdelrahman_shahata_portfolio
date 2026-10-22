@@ -225,6 +225,111 @@ button {
 }
 
 /* ==========================================================================
+   CYBER THEME MOUSE POINTER EFFECT
+   ========================================================================== */
+@media (pointer: fine) {
+  body {
+    cursor: default;
+  }
+
+  /* Soft ambient flashlight / cyber aura following cursor */
+  .cyber-cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.045) 0%, rgba(168, 85, 247, 0.025) 45%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    will-change: transform;
+  }
+
+  /* Center cyber dot */
+  .cyber-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: #38bdf8;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px #38bdf8, 0 0 18px rgba(168, 85, 247, 0.85);
+    opacity: 0;
+    transition: opacity 0.25s ease, background-color 0.2s ease, transform 0.15s ease;
+    will-change: transform;
+  }
+
+  /* Outer trailing cyber targeting ring */
+  .cyber-cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid rgba(56, 189, 248, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.28), inset 0 0 6px rgba(168, 85, 247, 0.25);
+    opacity: 0;
+    transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.22s ease,
+                background-color 0.22s ease,
+                box-shadow 0.22s ease,
+                opacity 0.25s ease;
+    will-change: transform;
+  }
+
+  /* Visible when active */
+  body.cursor-active .cyber-cursor-glow,
+  body.cursor-active .cyber-cursor-dot,
+  body.cursor-active .cyber-cursor-ring {
+    opacity: 1;
+  }
+
+  /* Hover state over interactive targets */
+  .cyber-cursor-ring.cursor-hover {
+    width: 52px;
+    height: 52px;
+    border-color: #a855f7;
+    background: rgba(168, 85, 247, 0.08);
+    box-shadow: 0 0 22px rgba(168, 85, 247, 0.45), inset 0 0 10px rgba(56, 189, 248, 0.3);
+  }
+
+  .cyber-cursor-dot.cursor-hover {
+    background: #c084fc;
+    box-shadow: 0 0 14px #c084fc, 0 0 24px rgba(168, 85, 247, 1);
+  }
+
+  /* Click state */
+  .cyber-cursor-ring.cursor-clicking {
+    width: 24px;
+    height: 24px;
+    border-color: #38bdf8;
+    background: rgba(56, 189, 248, 0.25);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
+  }
+}
+
+@media (pointer: coarse), (hover: none) {
+  .cyber-cursor-glow,
+  .cyber-cursor-dot,
+  .cyber-cursor-ring {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
    NAVIGATION BAR (Simple, Clean, Modern)
    ========================================================================== */
 .navbar {
@@ -765,16 +870,41 @@ button {
 }
 
 /* ==========================================================================
-   ABOUT SECTION
+   ABOUT SECTION (Streamlined Executive Profile)
    ========================================================================== */
-.about-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.75rem;
+.about-card-container {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .about-main-card {
-  grid-column: span 2;
+  padding: 2.5rem;
+}
+
+.about-main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.about-main-header .card-icon-header {
+  margin-bottom: 0;
+}
+
+.about-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
 }
 
 .card-icon-header {
@@ -820,53 +950,6 @@ button {
   border-radius: 6px;
   font-size: 0.82rem;
   font-weight: 500;
-}
-
-.education-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.edu-university {
-  font-size: 1.15rem;
-  color: var(--text-main);
-}
-
-.edu-program {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-.gpa-badge {
-  background: rgba(168, 85, 247, 0.08);
-  border: 1px solid rgba(168, 85, 247, 0.25);
-  border-radius: 8px;
-  padding: 0.85rem;
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  margin: 0.4rem 0;
-}
-
-.gpa-score {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--text-main);
-}
-
-.gpa-label {
-  font-size: 0.8rem;
-  color: var(--accent-violet);
-}
-
-.edu-location {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.84rem;
-  color: var(--text-dim);
 }
 
 .feature-list {
@@ -921,6 +1004,20 @@ button {
 /* ==========================================================================
    SKILLS SECTION (Modern Card Grid with Colorful SVGs)
    ========================================================================== */
+.skills-foundations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.foundation-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 .skills-card-grid-container {
   display: flex;
   flex-direction: column;
@@ -1241,6 +1338,184 @@ button {
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
   color: var(--text-dim);
+}
+
+/* ==========================================================================
+   EDUCATION SECTION (Hero Academic Card)
+   ========================================================================== */
+.education-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.education-card-hero {
+  padding: 2.5rem;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.edu-top-row {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.edu-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: var(--violet-soft);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-violet);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  flex-shrink: 0;
+}
+
+.edu-main-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.edu-heading-info {
+  flex: 1;
+  min-width: 260px;
+}
+
+.edu-degree-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.edu-degree-badge {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.edu-status-badge {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+}
+
+.edu-university-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.25rem;
+}
+
+.edu-program-title {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+.gpa-highlight-card {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(56, 189, 248, 0.08) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 12px;
+  padding: 1.25rem 1.6rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.12);
+  flex-shrink: 0;
+}
+
+.gpa-highlight-card .gpa-score {
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, #ffffff 0%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.3rem;
+}
+
+.gpa-highlight-card .gpa-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-violet);
+  margin-bottom: 0.2rem;
+}
+
+.gpa-highlight-card .gpa-sub {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.edu-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 1.75rem 0;
+}
+
+.edu-meta-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.edu-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.edu-meta-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  color: var(--accent-violet);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.edu-meta-val {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.edu-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.edu-chips span {
+  font-size: 0.78rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  transition: all var(--transition);
+}
+
+.edu-chips span:hover {
+  background: var(--violet-soft);
+  color: var(--text-main);
+  border-color: rgba(168, 85, 247, 0.3);
 }
 
 /* ==========================================================================
@@ -1686,6 +1961,10 @@ button {
   .contact-grid {
     grid-template-columns: 1fr;
   }
+
+  .skills-foundations-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1744,6 +2023,21 @@ button {
 
   .skill-badge-card {
     padding: 1.15rem 0.85rem;
+  }
+
+  .edu-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gpa-highlight-card {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .edu-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }
 

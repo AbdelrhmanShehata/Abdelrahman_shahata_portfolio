@@ -190,4 +190,81 @@
     });
   }
 
+  // --- Cyber Theme Mouse Pointer Effect ---
+  const cursorDot = document.getElementById('cyber-cursor-dot');
+  const cursorRing = document.getElementById('cyber-cursor-ring');
+  const cursorGlow = document.getElementById('cyber-cursor-glow');
+
+  if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
+    let mouseX = -100;
+    let mouseY = -100;
+    let ringX = -100;
+    let ringY = -100;
+    let isHovering = false;
+    let isClicking = false;
+    let isVisible = false;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!isVisible) {
+        isVisible = true;
+        document.body.classList.add('cursor-active');
+      }
+      cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%) ${isHovering ? 'scale(1.4)' : 'scale(1)'}`;
+      if (cursorGlow) {
+        cursorGlow.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      isVisible = false;
+      document.body.classList.remove('cursor-active');
+    });
+
+    document.addEventListener('mouseenter', () => {
+      isVisible = true;
+      document.body.classList.add('cursor-active');
+    });
+
+    window.addEventListener('mousedown', () => {
+      isClicking = true;
+      cursorRing.classList.add('cursor-clicking');
+    });
+
+    window.addEventListener('mouseup', () => {
+      isClicking = false;
+      cursorRing.classList.remove('cursor-clicking');
+    });
+
+    // Hover state on all interactive elements
+    const interactiveElements = 'a, button, input, textarea, .glass-card, .skill-badge-card, .nav-link, .meta-pill, .tag, .timeline-card, .gpa-badge, .gpa-highlight-card';
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(interactiveElements)) {
+        isHovering = true;
+        cursorRing.classList.add('cursor-hover');
+        cursorDot.classList.add('cursor-hover');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(interactiveElements)) {
+        isHovering = false;
+        cursorRing.classList.remove('cursor-hover');
+        cursorDot.classList.remove('cursor-hover');
+      }
+    });
+
+    // High performance RAF loop for the trailing ring
+    function renderCursor() {
+      if (isVisible) {
+        ringX += (mouseX - ringX) * 0.16;
+        ringY += (mouseY - ringY) * 0.16;
+        cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) ${isClicking ? 'scale(0.85)' : ''}`;
+      }
+      requestAnimationFrame(renderCursor);
+    }
+    requestAnimationFrame(renderCursor);
+  }
+
 })();
